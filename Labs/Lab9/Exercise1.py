@@ -52,33 +52,33 @@ else:
     second_split_class = 0
 
 #Map all paths to T or F
-count_slit_class0_second_split_class0 = 0
-count_slit_class0_second_split_class1 = 0
-count_slit_class1_second_split_class0 = 0
-count_slit_class1_second_split_class1 = 0
-count_slit_class0_second_split_class0_t = 0
-count_slit_class0_second_split_class1_t = 0
-count_slit_class1_second_split_class0_t = 0
-count_slit_class1_second_split_class1_t = 0
+count_split_class0_second_split_class0 = 0
+count_split_class0_second_split_class1 = 0
+count_split_class1_second_split_class0 = 0
+count_split_class1_second_split_class1 = 0
+count_split_class0_second_split_class0_t = 0
+count_split_class0_second_split_class1_t = 0
+count_split_class1_second_split_class0_t = 0
+count_split_class1_second_split_class1_t = 0
 for i in range(x.shape[0]):
     if x[i, split_class] == 0 and x[i, second_split_class] == 0:
-        count_slit_class0_second_split_class0 += 1
+        count_split_class0_second_split_class0 += 1
         if y[i] == 1:
-            count_slit_class0_second_split_class0_t += 1
+            count_split_class0_second_split_class0_t += 1
     elif x[i, split_class] == 0 and x[i, second_split_class] == 1:
-        count_slit_class0_second_split_class1 += 1
+        count_split_class0_second_split_class1 += 1
         if y[i] == 1:
-            count_slit_class0_second_split_class1_t += 1
+            count_split_class0_second_split_class1_t += 1
     elif x[i, split_class] == 1 and x[i, second_split_class] == 0:
-        count_slit_class1_second_split_class0
+        count_split_class1_second_split_class0 += 1
         if y[i] == 1:
-            count_slit_class0_second_split_class1_t += 1
+            count_split_class0_second_split_class1_t += 1
     elif x[i, split_class] == 1 and x[i, second_split_class] == 1:
-        count_slit_class1_second_split_class1 += 1
+        count_split_class1_second_split_class1 += 1
         if y[i] == 1:
-            count_slit_class1_second_split_class1_t += 1
-count_t_arr = [count_slit_class0_second_split_class0_t, count_slit_class0_second_split_class1_t, count_slit_class0_second_split_class1_t, count_slit_class1_second_split_class1_t]
-count_arr = [count_slit_class0_second_split_class0, count_slit_class0_second_split_class1, count_slit_class0_second_split_class1, count_slit_class1_second_split_class1]
+            count_split_class1_second_split_class1_t += 1
+count_t_arr = [count_split_class0_second_split_class0_t, count_split_class0_second_split_class1_t, count_split_class0_second_split_class1_t, count_split_class1_second_split_class1_t]
+count_arr = [count_split_class0_second_split_class0, count_split_class0_second_split_class1, count_split_class0_second_split_class1, count_split_class1_second_split_class1]
 result = []
 for count_t, count in zip(count_t_arr, count_arr):
     if count_t >= (count - count_t):
