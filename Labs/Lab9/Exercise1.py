@@ -1,8 +1,6 @@
 #Exercise 1:
 import numpy as np
 import pandas as pd
-from pandas.tseries.offsets import Second
-from sklearn.tree import DecisionTreeClassifier
 
 df = pd.read_csv('balloons_2features.csv')
 df['Act'] = df['Act'].map({'Stretch': 0, 'Dip': 1})
@@ -34,7 +32,7 @@ def info_gain(x, y, attribute, root_entropy):
     p1 = value_counts[0] / sum(value_counts)
     p2 = 1 - p1
     entropy = p1 * entropies[0] + p2 * entropies[1]
-    return root_entropy - entropy, entropy
+    return root_entropy - entropy
 
 #Find root entropy
 true_values = [i for i in range(len(y)) if y[i] == 1]
@@ -44,7 +42,7 @@ p2 = 1 - p1
 root_entropy = -(p1 * np.log2(p1)) - (p2 * np.log2(p2))
 
 #Find information gain of each class and select split class
-info_gains, base_entropy = [info_gain(x, y, i, root_entropy) for i in range(x.shape[1])]
+info_gains = [info_gain(x, y, i, root_entropy) for i in range(x.shape[1])]
 split_class = np.argmax(info_gains)
 
 #Select second split class
